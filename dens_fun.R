@@ -3,9 +3,9 @@ dens_fun <- function(frequencies, adjust = 3, n = 100, repetitions = 50, plot = 
   frequencies[is.na(frequencies)] <- 0  # exchange NAs with 0s
   data_i_j <- rep(1:10, frequencies) # 'recreate' the dataset
   
-  if (sd(data_i_j) < 0.01 || (max(data_i_j) - min(data_i_j)) == 1) {
-    # If sd is too small or range is 1, return the single value as the mode location
-    return(list(modality = 1, mode_locations = unique(data_i_j)))
+  if (sd(data_i_j) < 0.01 || (max(data_i_j) - min(data_i_j)) ==2) {
+    # If sd is too small or range is 2, return the most frequent value as the mode location
+    mode_location <- which.max(table(data_i_j))
   }
   
   # Calculate the proportion of the mode (Q)
