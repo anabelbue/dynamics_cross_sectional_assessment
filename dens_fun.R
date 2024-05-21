@@ -1,4 +1,9 @@
 dens_fun <- function(frequencies, adjust = 3, n = 100, repetitions = 50, plot = FALSE) {
+  # no estimation is possible if all values are missing
+  if(all(is.na(frequencies))) {
+    return("You did not provided percentagtes for this characteristic")
+  }
+  
   # Convert the frequency vector to a data vector
   frequencies[is.na(frequencies)] <- 0  # exchange NAs with 0s
   data_i_j <- rep(1:10, frequencies) # 'recreate' the dataset
